@@ -1,43 +1,21 @@
+import { CountryTypes, StoreTypes } from "~/types";
+
 export default {
-  getList1(state) {
-    const getState = state.country
-    const splitList = getState.filter((item, index: number) => {
-      if (index < 100) {
-        return item
+
+  filterCountry(state: StoreTypes) {
+    return (keyword: string) => {
+      const countries = state.country
+
+      if (keyword.length == 0) {
+        return countries;
       }
-    })
-    return splitList
-  },
-  getList2(state) {
-    const getState = state.country
-    const splitList = getState.filter((item, index: number) => {
-      if ((index >= 100) & (index < 200)) {
-        return item
-      }
-    })
-    return splitList
-  },
-  getList3(state) {
-    const getState = state.country
-    const splitList = getState.filter((item, index: number) => {
-      if (index >= 200) {
-        return item
-      }
-    })
-    return splitList
-  },
-  filterCountry(state) {
-    const searchFilter = (keyword: string) => {
-      return state.country.filter((item) => {
-        if (keyword.length > 3) {
+      return countries.filter((item: CountryTypes) => {
           const regex = new RegExp(keyword, 'gi')
-          const search = item.name.match(regex) || []
-          console.log(search)
-          return search
-        }
-        return state
+          const search = item.name.match(regex) || item.capital.match(regex)
+          if (search !== null) {
+            return search
+          }
       })
     }
-    return searchFilter
   },
 }

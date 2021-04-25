@@ -1,32 +1,22 @@
 <template>
   <div>
-    <v-text-field
-      label="Pesquisar País ou capital"
-      v-model="search"
-    ></v-text-field>
     <v-col cols="12 ml-10">
       <v-card class="mx-auto">
+        <v-col cols="10 text-container">
+          <v-text-field
+            label="Realize a pesquisa por País, capital ou idioma"
+            v-model="search"
+            append-icon="mdi-magnify"
+            class="mx-auto"
+          ></v-text-field>
+        </v-col>
         <v-row>
-          <v-col cols="4" lg="4" sm="12" xs="12">
-            <Table
-              v-if="filterCountry.list1.length > 0"
+          <v-col>
+            <custom-table
               :titles="headers"
-              :items="filterCountry.list1"
+              :items="stateCountry"
               :perpage="20"
-            />
-          </v-col>
-          <v-col cols="4" lg="4" sm="12" xs="12">
-            <Table
-              :titles="headers"
-              :items="filterCountry.list2"
-              :perpage="20"
-            />
-          </v-col>
-          <v-col cols="4" lg="4" sm="12" xs="12">
-            <Table
-              :titles="headers"
-              :items="filterCountry.list3"
-              :perpage="20"
+              :search="search"
             />
           </v-col>
         </v-row>
@@ -37,11 +27,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import Table from '@/components/table.vue'
+import CustomTable from '@/components/table.vue'
+import { CountryTypes } from '~/types'
 @Component({
   name: 'Home',
   components: {
-    Table,
+    CustomTable,
   },
   data: () => {
     return {}
@@ -56,13 +47,18 @@ export default class Home extends Vue {
    * Data
    */
 
+  /**
+   * a variável @headers constrói os elementos da tabela,
+   * cada objeto de @headers representa uma coluna da tabela,
+   * @value é o nome do parâmetro do objeto que será preenchido na coluna da tabela
+   */
   private headers = [
     {
-      text: 'Country',
-      align: 'start',
+      text: 'Países',
       value: 'name',
     },
-    { text: 'Capital', align: 'start', value: 'capital' },
+    { text: 'Capitais', value: 'capital' },
+    { text: 'Idiomas', value: 'language' },
   ]
 
   private search = ''
@@ -70,17 +66,11 @@ export default class Home extends Vue {
    * Propriedades Computáveis
    */
 
-  get filterCountry() {
-    const getter = this.$store.getters
-    const lists = {
-      list1: getter.getList1,
-      list2: getter.getList2,
-      list3: getter.getList1,
-    }
-    return lists
-  }
-
-  get stateCountry() {
+  /**
+   * A função recebe os valores da state
+   */
+  get stateCountry(): CountryTypes {
+    console.log(this.$store.state.country)
     return this.$store.state.country
   }
   /**
@@ -89,4 +79,9 @@ export default class Home extends Vue {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.text-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>

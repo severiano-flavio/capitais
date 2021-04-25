@@ -2,9 +2,18 @@
   <v-data-table
     :headers="titles"
     :items="items"
+    item-key="name"
     :items-per-page="20"
+    :search="search"
     class="elevation-1"
-  ></v-data-table>
+  >
+    <template v-slot:[`item.name`]="{ item }">
+      <a :href="item.flag" target="_blank">
+        <img :src="item.flag" class="flag-icon" />
+      </a>
+      <span>{{ item.name }}</span>
+    </template>
+  </v-data-table>
 </template>
 
 <script lang="ts">
@@ -13,10 +22,6 @@ import { Component, Vue } from 'nuxt-property-decorator'
   name: 'table',
   components: {},
   props: {
-    titles: {
-      type: Array,
-      required: true,
-    },
     items: {
       type: Array,
       required: true,
@@ -24,6 +29,13 @@ import { Component, Vue } from 'nuxt-property-decorator'
     perpage: {
       type: Number,
       default: 20,
+    },
+    search: {
+      type: String,
+    },
+    titles: {
+      type: Array,
+      required: true,
     },
   },
 })
@@ -40,4 +52,24 @@ export default class Table extends Vue {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.v-data-table-header {
+  background-color: rgba(93, 5, 255, 0.192);
+  font-weight: 700;
+
+  th {
+    font-size: 1.2rem !important;
+    padding: 0.6rem 0 !important;
+  }
+}
+tr {
+  td {
+    padding: 0.6rem 1rem !important;
+  }
+}
+.flag-icon {
+  width: 1.5rem;
+  height: auto;
+  margin: 0 1rem;
+}
+</style>
