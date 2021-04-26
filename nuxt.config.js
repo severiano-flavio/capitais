@@ -14,9 +14,13 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Conheça as capitais de todos os países' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Conheça as capitais de todos os países',
+      },
     ],
-    // link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    //  link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -24,7 +28,7 @@ export default {
     // padronização de layout em navegadores
     '@/assets/scss/reset.scss',
     // inclusão de estilos globais
-    '@/assets/scss/global.scss'
+    '@/assets/scss/global.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -54,7 +58,7 @@ export default {
   vuetify: {
     customVariables: ['@/assets/scss/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
