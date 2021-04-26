@@ -7,7 +7,7 @@
     :search="search"
     class="elevation-1"
   >
-    <template v-slot:[`item.name`]="{ item }">
+    <template #[`item.name`]="{ item }">
       <a :href="item.flag" target="_blank">
         <img :src="item.flag" class="flag-icon" />
       </a>
@@ -54,7 +54,7 @@ export default class Table extends Vue {
 
 <style lang="scss">
 .v-data-table-header {
-  background-color: rgba(93, 5, 255, 0.192);
+  background-color: rgba(22, 5, 255, 0.068);
   font-weight: 700;
 
   th {

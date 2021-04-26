@@ -1,7 +1,8 @@
+import { MutationTree } from 'vuex'
 import { responseCountry } from '~/api/services/getCountry'
 
 export default {
-  async getCountry({ state, commit }) {
+  async getCountry({ commit }: MutationTree<string>) {
     try {
       const response = await responseCountry()
       commit('SET_COUNTRY', response.data)
