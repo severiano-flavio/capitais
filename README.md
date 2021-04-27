@@ -15,7 +15,9 @@ Para o desenvolvimento e organização do código, foam utilizados:
 
 ### Visualização do Projeto
 
-- ##### O projeto pode ser visualizado pelo Link abaixo:
+- ##### Pelo Link abaixo do deploy feito no Netlify:
+
+https://sad-stonebraker-5acc82.netlify.app
 
 #### ou
 
