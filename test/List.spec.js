@@ -7,24 +7,26 @@ describe('Comportamento de listas', () => {
   Vue.use(vuetify)
   const localVue = createLocalVue()
   localVue.use(vuetify)
-  test('Lista preenchida', () => {
-    const wrapper = mount(List, {
-      localVue,
-      propsData: {
-        items: {
-          capital: 'brasil',
-        },
-      },
-    })
-    const list = wrapper.find('v-list-item')
-    expect(list).toBeTruthy()
-  })
   test('Lista sem conteúdo', () => {
     const wrapper = mount(List, {
       localVue,
     })
 
-    const list = wrapper.find('v-list-item')
-    expect(list).toBeTruthy()
+    const list = wrapper.find('.v-list-item__title')
+    expect(list.text()).toBe('')
+  })
+  test('Lista preenchida', () => {
+    const wrapper = mount(List, {
+      localVue,
+      propsData: {
+        items: [
+          {
+            capital: 'brasil',
+          },
+        ],
+      },
+    })
+    const list = wrapper.find('.v-list-item__title')
+    expect(list.text()).toBe('brasil')
   })
 })

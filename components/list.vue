@@ -4,7 +4,7 @@
       <div class="white--text">Capitais</div>
     </v-card-title>
     <v-list disabled>
-      <v-list-item-group color="primary">
+      <v-list-item-group v-if="items.length > 0" color="primary">
         <v-list-item v-for="(item, i) in items" :key="i">
           <v-list-item-content>
             <v-list-item-title class="text-center" v-text="item.capital" />

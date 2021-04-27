@@ -52,6 +52,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import { mapActions, mapGetters } from 'vuex'
 import List from '@/components/list.vue'
 import { CountryTypes } from '~/types'
 @Component({
@@ -59,10 +60,27 @@ import { CountryTypes } from '~/types'
   components: {
     List,
   },
+  computed: {
+    ...mapActions({
+      getCountry: 'getCountry',
+    }),
+    ...mapGetters({
+      getList1: 'getList1',
+      getList2: 'getList2',
+      getList3: 'getList3',
+    }),
+  },
 })
 export default class Home extends Vue {
+  // Declarando variáveis que serão instanciadas do Vuex
+  getList1: any
+  getList2: any
+  getList3: any
+  getCountry!: () => any
+
   mounted() {
-    this.$store.dispatch('getCountry')
+    // eslint-disable-next-line no-unused-expressions
+    this.getCountry
   }
 
   /**
@@ -90,21 +108,21 @@ export default class Home extends Vue {
   /**
    * Computed properties  que recebem o Getter com 1/3 da lista original da State
    * Função recebe 2 parâmetros
+   * @method getList está em @method mapGetters que está em @Component
    * @param 1 é @type {String} que será utilizada para realizar a pesquisa
    * @param 2 é @type {String} que decidirá a ordem da lista @example "A-Z"
    * @returns {CountryTypes[]}
    */
   get list1(): CountryTypes[] {
-    return []
-    // return this.$store.getters.getList1(this.regexSearch, this.sort)
+    return this.getList1(this.regexSearch, this.sort)
   }
 
   get list2(): CountryTypes[] {
-    return this.$store.getters.getList2(this.regexSearch, this.sort)
+    return this.getList2(this.regexSearch, this.sort)
   }
 
   get list3(): CountryTypes[] {
-    return this.$store.getters.getList3(this.regexSearch, this.sort)
+    return this.getList3(this.regexSearch, this.sort)
   }
 }
 </script>
