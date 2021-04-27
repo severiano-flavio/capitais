@@ -6,8 +6,7 @@ export function searchObject(
 ): CountryTypes[] {
   // eslint-disable-next-line array-callback-return
   const filter = list.filter((item) => {
-    const fixSearch = search
-    const regExp = new RegExp(fixSearch, 'gi')
+    const regExp = new RegExp(search, 'gi')
     const result = item.capital.match(regExp)
     if (result != null) {
       return item

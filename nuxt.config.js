@@ -6,8 +6,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - capitais',
-    title: 'capitais',
+    title: 'Lista de Capitais',
     htmlAttrs: {
       lang: 'pt',
     },

@@ -2,6 +2,10 @@ import { sortObject, searchObject } from '~/helpers/arrayHelpers'
 import { StoreTypes } from '~/types'
 
 export default {
+  /**
+   * @param search Recebe string
+   * @param sort recebe string "A-Z" ou "Z-A"
+   */
   getList1(state: StoreTypes) {
     return (search: RegExp, sort: string) => {
       // eslint-disable-next-line array-callback-return

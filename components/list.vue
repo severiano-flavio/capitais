@@ -1,11 +1,13 @@
 <template>
-  <v-card class="mx-auto" max-width="300" tile>
-    <v-list dense>
-      <v-subheader>Capitais</v-subheader>
+  <v-card class="mx-auto" min-width="200" max-width="400" elevation="3" tile>
+    <v-card-title class="blue-grey darken-3 justify-center px-2 py-2">
+      <div class="white--text">Capitais</div>
+    </v-card-title>
+    <v-list disabled>
       <v-list-item-group color="primary">
         <v-list-item v-for="(item, i) in items" :key="i">
           <v-list-item-content>
-            <v-list-item-title v-text="item.capital"></v-list-item-title>
+            <v-list-item-title class="text-center" v-text="item.capital" />
           </v-list-item-content>
         </v-list-item>
       </v-list-item-group>
@@ -21,7 +23,12 @@ import { CountryTypes } from '~/types'
   components: {},
 })
 export default class Table extends Vue {
-  @Prop({ required: true }) items!: Array<CountryTypes>
+  @Prop({
+    default() {
+      return [{ capital: '' }]
+    },
+  })
+  items!: Array<CountryTypes>
 }
 </script>
 

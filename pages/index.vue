@@ -2,37 +2,38 @@
   <v-app class="teste">
     <v-main class="app-bg">
       <v-col cols="11 ml-10">
-        <v-card class="mx-auto px-8">
+        <v-card class="mx-auto px-8 py-8">
           <v-col cols="12">
-            <v-row>
-              <v-col cols="8">
-                <v-row class="row-container">
-                  <span class="mr-2">Filtro:</span>
-                  <input
-                    v-model="search"
-                    type="text"
-                    label="Solo"
-                    class="row-input"
-                  />
-                </v-row>
-              </v-col>
-              <v-col cols="4">
-                <v-row class="row-container">
-                  <span class="mr-2 row-text">Ordenação:</span>
-                  <v-col cols="6 col-custom-container">
+            <v-row class="row-container justify-space-between">
+              <div>
+                <span class="mr-2 font-weight-medium">Filtro:</span>
+                <input
+                  v-model="search"
+                  type="text"
+                  label="Solo"
+                  class="row-input"
+                />
+              </div>
+              <div>
+                <div class="d-flex text-center">
+                  <span class="mr-2 align-self-center font-weight-medium"
+                    >Ordenação:</span
+                  >
+                  <div class="row-container-select">
                     <v-select
                       v-model="sort"
+                      class="mt-2 mb-n5"
                       :items="items"
                       height="20"
                       dense
                       solo
-                    ></v-select>
-                  </v-col>
-                </v-row>
-              </v-col>
+                    />
+                  </div>
+                </div>
+              </div>
             </v-row>
           </v-col>
-          <v-row>
+          <v-row class="mt-5">
             <v-col>
               <list :items="list1" />
             </v-col>
@@ -78,22 +79,32 @@ export default class Home extends Vue {
    */
 
   /**
+   * Computed properties que inclui scape em string caracteres especiais
+   * Evita erro no Regex
+   * @returns {string}
+   */
+  get regexSearch(): string {
+    return this.search.replace(/([^a-zA-Z0-9_-\s])/g, '\\$1')
+  }
+
+  /**
    * Computed properties  que recebem o Getter com 1/3 da lista original da State
    * Função recebe 2 parâmetros
    * @param 1 é @type {String} que será utilizada para realizar a pesquisa
    * @param 2 é @type {String} que decidirá a ordem da lista @example "A-Z"
-   * @return {CountryTypes[]}
+   * @returns {CountryTypes[]}
    */
   get list1(): CountryTypes[] {
-    return this.$store.getters.getList1(this.search, this.sort)
+    return []
+    // return this.$store.getters.getList1(this.regexSearch, this.sort)
   }
 
   get list2(): CountryTypes[] {
-    return this.$store.getters.getList2(this.search, this.sort)
+    return this.$store.getters.getList2(this.regexSearch, this.sort)
   }
 
   get list3(): CountryTypes[] {
-    return this.$store.getters.getList3(this.search, this.sort)
+    return this.$store.getters.getList3(this.regexSearch, this.sort)
   }
 }
 </script>
@@ -115,8 +126,8 @@ export default class Home extends Vue {
     border: 1px solid rgb(185, 185, 185);
     outline: none;
   }
-  .row-text {
-    margin-bottom: 7%;
+  .row-container-select {
+    width: 150px;
   }
 }
 .text-container {
