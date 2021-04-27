@@ -1,7 +1,5 @@
 # Listas de Capitais
 
-<img src="https://seeklogo.com/images/N/nuxt-logo-5EF50E1ABD-seeklogo.com.png"/>
-
 ### Ferramentas Utilizadas
 
 - ##### [Nuxt.js](https://nuxtjs.org/)
