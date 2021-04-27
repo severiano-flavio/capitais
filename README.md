@@ -1,5 +1,13 @@
 # Listas de Capitais
 
+<p align="center">
+  <img src="https://seeklogo.com/images/N/nuxt-logo-5EF50E1ABD-seeklogo.com.png" alt="Logo" width="80" height="80">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" width="80px" height="80px"/>
+  <img src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-300.png" width="80px" height="80px"/>
+  <img src="https://cdn.freebiesupply.com/logos/large/2x/jest-logo-png-transparent.png" width="80px" height="80px"/>
+</p>
+
+
 ### Ferramentas Utilizadas
 
 - ##### [Nuxt.js](https://nuxtjs.org/)
