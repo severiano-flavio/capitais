@@ -47,9 +47,4 @@ tr {
     padding: 0.6rem 1rem !important;
   }
 }
-.flag-icon {
-  width: 1.5rem;
-  height: auto;
-  margin: 0 1rem;
-}
 </style>

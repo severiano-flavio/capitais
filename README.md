@@ -1,20 +1,28 @@
-# capitais
+# Listas de Capitais
 
-## Build Setup
+### Ferramentas Utilizadas
 
-```bash
-# install dependencies
-$ yarn install
+- ##### [Nuxt.js](https://nuxtjs.org/)
+- ##### [Typescript](https://typescript.nuxtjs.org/)
+- ##### [Vuetify](https://next.vuetifyjs.com/en/)
+- ##### [Jest](https://jestjs.io/)
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+Para o desenvolvimento e organização do código, foam utilizados:
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+- ##### Metodologia [BEM](http://getbem.com/introduction/) (Blocks, Elements and Modifiers)
+- ##### Lib [Nuxt Property Decorator](https://www.npmjs.com/package/nuxt-property-decorator)
+- ##### Mapeamento de funções do Vuex ([mapActions, mapGetters](https://blog.logrocket.com/a-complete-guide-to-mapping-in-vuex/))
 
-# generate static project
-$ yarn generate
-```
+### Visualização do Projeto
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+- ##### O projeto pode ser visualizado pelo Link abaixo:
+
+#### ou
+
+- #### Atráves da execução do projeto:
+  - Clone o repositório
+  - execute o comando `yarn install`
+  - execute o comando `yarn dev`
+  - Acesse o link padrão http://localhost:3000/ (caso dessa porta já esteja sendo utilizada, verificar o link gerado no terminal)
+
+As listas foram separadas em `Getters`, Dessa forma a state não é modificada. Portando, a state pode ser reaproveitada em futuras implementações

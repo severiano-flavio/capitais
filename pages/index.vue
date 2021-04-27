@@ -1,17 +1,17 @@
 <template>
   <v-app class="teste">
-    <v-main class="app-bg">
+    <v-main class="app--bg">
       <v-col cols="11 ml-10">
         <v-card class="mx-auto px-8 py-8">
           <v-col cols="12">
-            <v-row class="row-container justify-space-between">
+            <v-row class="row__container justify-space-between">
               <div>
                 <span class="mr-2 font-weight-medium">Filtro:</span>
                 <input
                   v-model="search"
                   type="text"
                   label="Solo"
-                  class="row-input"
+                  class="row__input"
                 />
               </div>
               <div>
@@ -19,7 +19,7 @@
                   <span class="mr-2 align-self-center font-weight-medium"
                     >Ordenação:</span
                   >
-                  <div class="row-container-select">
+                  <div class="row__container__select">
                     <v-select
                       v-model="sort"
                       class="mt-2 mb-n5"
@@ -128,31 +128,24 @@ export default class Home extends Vue {
 </script>
 
 <style lang="scss">
-.app-bg {
+.app--bg {
   background-color: rgba($color: #eeeeee, $alpha: 1);
 }
-.row-container {
+.row__container {
   align-items: center;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   margin-top: 0.4rem;
   margin-bottom: 0.4rem;
-  .row-input {
+  .row__input {
     width: 15rem;
     font-size: 1.1rem;
     line-height: 1.5;
     border: 1px solid rgb(185, 185, 185);
     outline: none;
   }
-  .row-container-select {
+  .row__container__select {
     width: 150px;
   }
-}
-.text-container {
-  margin-left: auto;
-  margin-right: auto;
-}
-.col-custom-container {
-  padding: 0;
 }
 </style>
